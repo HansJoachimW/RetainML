@@ -37,6 +37,8 @@ pipeline = Pipeline([
 # Train
 pipeline.fit(X_train, y_train)
 
+y_pred = pipeline.predict(X_test)
+
 metrics = {
     "accuracy": accuracy_score(y_test, y_pred),
     "precision": precision_score(y_test, y_pred),
