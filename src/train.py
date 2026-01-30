@@ -6,6 +6,12 @@ from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from preprocess import build_preprocessor
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score
+)
 
 # Load
 df = pd.read_csv("data/raw/telco_churn.csv")
