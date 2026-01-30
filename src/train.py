@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+import os
 
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
@@ -31,4 +32,5 @@ pipeline = Pipeline([
 pipeline.fit(X_train, y_train)
 
 # Save
+os.makedirs("models", exist_ok=True)
 joblib.dump(pipeline, "models/churn_model.pkl")
