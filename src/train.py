@@ -31,6 +31,17 @@ pipeline = Pipeline([
 # Train
 pipeline.fit(X_train, y_train)
 
+metrics = {
+    "accuracy": accuracy_score(y_test, y_pred),
+    "precision": precision_score(y_test, y_pred),
+    "recall": recall_score(y_test, y_pred),
+    "f1": f1_score(y_test, y_pred)
+}
+
 # Save
 os.makedirs("models", exist_ok=True)
 joblib.dump(pipeline, "models/churn_model.pkl")
+
+# Save metrics
+with open("models/metrics.json", "w") as f:
+    json.dump(metrics, f, indent=4)

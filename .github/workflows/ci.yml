@@ -25,12 +25,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Create models directory
+        run: mkdir -p models
+
       - name: Train churn model
         run: |
           python src/train.py
+          echo "Contents of models directory:"
           ls -la models
 
-      - name: Upload trained model
+      - name: Show training metrics
+        run: cat models/metrics.json
+
+      - name: Upload trained model and metrics
         uses: actions/upload-artifact@v4
         with:
           name: retainml-model-${{ github.run_id }}
